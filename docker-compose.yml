@@ -1,0 +1,36 @@
+version: '2'
+services:
+  data:
+    image: nazarpc/webserver:data-v1
+    volumes_from:
+    - container:dockerproj.com
+
+  logrotate:
+    image: nazarpc/webserver:logrotate-v1
+    restart: always
+    volumes_from:
+      - data
+
+  mariadb:
+    image: nazarpc/webserver:mariadb-v1
+    restart: always
+    volumes_from:
+      - data
+
+  nginx:
+    image: nazarpc/webserver:nginx-v1
+    links:
+      - php
+    ports:
+      - 10.0.5.12:80:80
+    restart: always
+    volumes_from:
+      - data
+
+  php:
+    image: nazarpc/webserver:php-fpm-v1
+    links:
+      - mariadb:mysql
+    restart: always
+    volumes_from:
+      - data
