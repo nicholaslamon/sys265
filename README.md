@@ -6,6 +6,7 @@ This Webserver is basic right now, but is extremely versatile, as the containers
 
 Configuring this webserver wasn't extremely difficult. To start, the user must install docker and the compose extension.
 Then, you need to make a new directory (```mkdir {dir_name}```) and create a docker-compose.yml file in that directory(```touch docker-compose.yml```).
+After, run the command ```docker run --name {any_name}.com nazarpc/webserver:data-v1```. This adds the nazarpc/webserver container to your docker system and enables the usage of the following containers.
 Once that is done, you open the file in any kind of editor you like (I personally use nano) and add the following configurations:
 
 ```
